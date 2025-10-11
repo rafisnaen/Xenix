@@ -58,17 +58,17 @@ const Projects = () => {
       : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="pt-24 pb-16 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
+        <div className="text-center mb-10 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Uncover <span className="gradient-text">Projects</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-neon mx-auto rounded-full"></div>
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12 animate-slide-up">
+        <div className="flex flex-wrap justify-center gap-2 mb-10 animate-slide-up">
           {categories.map((category) => (
             <Button
               key={category}
@@ -86,43 +86,43 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProjects.map((project, index) => (
             <div
               key={project.title}
-              className="bg-card p-6 rounded-2xl border border-primary/20 card-glow animate-fade-in group"
+              className="bg-card p-5 rounded-2xl border border-primary/20 card-glow animate-fade-in group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className={`px-3 py-1 bg-${project.color}/10 border border-${project.color}/30 rounded-full text-sm text-${project.color}`}>
+              <div className="flex items-start justify-between mb-3">
+                <div className={`px-2.5 py-0.5 bg-${project.color}/10 border border-${project.color}/30 rounded-full text-xs text-${project.color}`}>
                   {project.category}
                 </div>
                 <div className="flex gap-2">
                   <Button
                     size="icon"
                     variant="ghost"
-                    className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/10"
                   >
                     <Github className="w-4 h-4" />
                   </Button>
                   <Button
                     size="icon"
                     variant="ghost"
-                    className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/10"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}

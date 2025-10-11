@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react"; // Impor ikon Download
 import { Button } from "@/components/ui/button";
+import CV from "@/assets/Curriculum Vitae_MuhammadRafiIsnaen_Internship.pdf"; // Path ke CV Anda
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,7 +20,6 @@ const Navbar = () => {
     { href: "#about", label: "About" },
     { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
-    { href: "#services", label: "Services" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -31,12 +31,28 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a
-            href="#home"
-            className="text-xl font-bold gradient-text hover:opacity-80 transition-opacity"
-          >
-            Rafi.dev
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="#home"
+              className="text-xl font-bold gradient-text hover:opacity-80 transition-opacity"
+            >
+              Rafi.dev
+            </a>
+            <span className="text-muted-foreground hidden sm:inline">///</span>
+            <a
+              href={CV}
+              download="CV_MuhammadRafiIsnaen.pdf"
+              className="hidden sm:inline"
+            >
+              <Button
+                variant="ghost"
+                className="text-muted-foreground hover:text-primary hover:bg-transparent h-auto p-0"
+              >
+                Download CV
+                <Download className="w-4 h-4 ml-2" />
+              </Button>
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -75,6 +91,13 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <a
+              href={CV}
+              download="CV_MuhammadRafiIsnaen.pdf"
+              className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-muted rounded-lg transition-all"
+            >
+              Download CV
+            </a>
           </div>
         )}
       </div>

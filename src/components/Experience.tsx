@@ -33,11 +33,11 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-muted/20 relative">
+    <section id="experience" className="pt-24 pb-16 bg-muted/20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            My <span className="gradient-text">Experience</span>
+            The <span className="gradient-text">Journey Within</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-neon mx-auto rounded-full"></div>
         </div>

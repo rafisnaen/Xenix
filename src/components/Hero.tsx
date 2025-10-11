@@ -1,11 +1,87 @@
-import { ArrowRight, Download } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
+  // ... (kode state dan useEffect tetap sama) ...
+  const [titleText, setTitleText] = useState('');
+  const [isDeletingTitle, setIsDeletingTitle] = useState(false);
+  const [titleLoopNum, setTitleLoopNum] = useState(0);
+  const [titleDelta, setTitleDelta] = useState(150 - Math.random() * 50);
+  const titlesToRotate = ["Software Engineer", "AI Enthusiast"];
+  const titlePeriod = 1200;
+
+  // --- State untuk Typewriter Sapaan ---
+  const [greetingText, setGreetingText] = useState('');
+  const [isDeletingGreeting, setIsDeletingGreeting] = useState(false);
+  const [greetingLoopNum, setGreetingLoopNum] = useState(0);
+  const [greetingDelta, setGreetingDelta] = useState(150);
+  const greetingsToRotate = ["Hi,", "こんにちは,", "안녕하세요,", "Bonjour,", "Hallo,"];
+  const greetingPeriod = 2000;
+
+  // --- useEffect untuk Typewriter Judul ---
+  useEffect(() => {
+    let titleTicker = setInterval(() => {
+      tickTitle();
+    }, titleDelta);
+    return () => { clearInterval(titleTicker) };
+  }, [titleText]);
+
+  // --- useEffect untuk Typewriter Sapaan ---
+  useEffect(() => {
+    let greetingTicker = setInterval(() => {
+      tickGreeting();
+    }, greetingDelta);
+    return () => { clearInterval(greetingTicker) };
+  }, [greetingText]);
+
+  // --- Fungsi Tick untuk Judul ---
+  const tickTitle = () => {
+    let i = titleLoopNum % titlesToRotate.length;
+    let fullText = titlesToRotate[i];
+    let updatedText = isDeletingTitle ? fullText.substring(0, titleText.length - 1) : fullText.substring(0, titleText.length + 1);
+
+    setTitleText(updatedText);
+
+    if (isDeletingTitle) {
+      setTitleDelta(prevDelta => prevDelta / 1.5);
+    }
+
+    if (!isDeletingTitle && updatedText === fullText) {
+      setIsDeletingTitle(true);
+      setTitleDelta(titlePeriod);
+    } else if (isDeletingTitle && updatedText === '') {
+      setIsDeletingTitle(false);
+      setTitleLoopNum(titleLoopNum + 1);
+      setTitleDelta(250);
+    }
+  };
+
+  // --- Fungsi Tick untuk Sapaan ---
+  const tickGreeting = () => {
+    let i = greetingLoopNum % greetingsToRotate.length;
+    let fullText = greetingsToRotate[i];
+    let updatedText = isDeletingGreeting ? fullText.substring(0, greetingText.length - 1) : fullText.substring(0, greetingText.length + 1);
+
+    setGreetingText(updatedText);
+
+    if (isDeletingGreeting) {
+        setGreetingDelta(100);
+    }
+
+    if (!isDeletingGreeting && updatedText === fullText) {
+      setIsDeletingGreeting(true);
+      setGreetingDelta(greetingPeriod);
+    } else if (isDeletingGreeting && updatedText === '') {
+      setIsDeletingGreeting(false);
+      setGreetingLoopNum(greetingLoopNum + 1);
+      setGreetingDelta(300);
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-      {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-cyber opacity-30"></div>
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float"></div>
@@ -14,28 +90,57 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* Text Content */}
           <div className="flex-1 text-center lg:text-left space-y-6 animate-fade-in">
-            <div className="inline-block">
-              <span className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary glow-text">
-                👋 Welcome to my portfolio
-              </span>
-            </div>
             
+            {/* --- LOKASI ICON SOSIAL MEDIA --- */}
+            <div className="flex gap-4 justify-center lg:justify-start">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="relative group">
+                <Button variant="ghost" size="icon" className="h-14 w-14 hover:bg-white/10">
+                  <img src="/logos/instagram.svg" alt="Instagram" className="h-8 w-8 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+                </Button>
+                <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-xs text-foreground opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
+                  Instagram
+                </span>
+              </a>
+              <a href="https://github.com/rafisnaen" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="relative group">
+                <Button variant="ghost" size="icon" className="h-14 w-14 hover:bg-white/10">
+                  <img src="/logos/github.svg" alt="GitHub" className="h-8 w-8 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+                </Button>
+                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-xs text-foreground opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
+                  GitHub
+                </span>
+              </a>
+              <a href="https://linkedin.com/in/rafiisnaen" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="relative group">
+                <Button variant="ghost" size="icon" className="h-14 w-14 hover:bg-white/10">
+                  <img src="/logos/linkedin.svg" alt="LinkedIn" className="h-8 w-8 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+                </Button>
+                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-xs text-foreground opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
+                  LinkedIn
+                </span>
+              </a>
+            </div>
+
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-              Hi, I'm{" "}
-              <span className="gradient-text glow-text">
-                Rafi Isnaen
-              </span>
+              {/* Baris pertama untuk sapaan, dengan tinggi tetap */}
+              <div className="h-[1.2em]">
+                <span className="inline-block">{greetingText}</span>
+              </div>
+              {/* Baris kedua untuk nama */}
+              <div>
+                I'm <span style={{ color: '#00e5fe' }}>Rafi</span>{' '}
+                <span style={{ color: '#00aeff' }}>Isnaen</span>
+              </div>
             </h1>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-primary">
-              Fullstack Developer & AI Enthusiast
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-primary h-12">
+              <span className="border-r-4 border-primary animate-[blink-caret_.75s_step-end_infinite]">
+                {titleText}
+              </span>
             </h2>
 
             <p className="text-lg text-muted-foreground max-w-2xl">
-              I'm a Software Engineering student at BINUS University, passionate about building 
-              scalable and intelligent systems. I'm exploring Fullstack Development and AI to 
+              Specialized in Software Engineering, passionate about building 
+              scalable and intelligent systems. I'm exploring the development of an application and AI to 
               create future-ready digital solutions.
             </p>
 
@@ -54,16 +159,14 @@ const Hero = () => {
                 className="border-primary/50 hover:bg-primary/10 hover:border-primary group"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Contact Me
-                <Download className="ml-2 group-hover:translate-y-1 transition-transform" />
+                Reach Out !
+                <Send className="ml-2 group-hover:translate-x-1 transition-transform" /> 
               </Button>
             </div>
           </div>
 
-          {/* Profile Image */}
           <div className="flex-1 flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-neon rounded-full blur-2xl opacity-50 animate-glow-pulse"></div>
+            <div className="relative glowing-frame">
               <img
                 src={profileImage}
                 alt="Rafi Isnaen"
