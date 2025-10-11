@@ -7,186 +7,248 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
-    /* Cyberpunk Dark Theme - Neon Futuristic */
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    :root {
+      /* Cyberpunk Dark Theme - Neon Futuristic */
+      --background: 240 10% 3.9%;
+      --foreground: 0 0% 98%;
 
-    --card: 240 8% 8%;
-    --card-foreground: 0 0% 98%;
+      --card: 240 8% 8%;
+      --card-foreground: 0 0% 98%;
 
-    --popover: 240 8% 8%;
-    --popover-foreground: 0 0% 98%;
+      --popover: 240 8% 8%;
+      --popover-foreground: 0 0% 98%;
 
-    /* Neon Cyan Primary */
-    --primary: 185 100% 50%;
-    --primary-foreground: 240 10% 3.9%;
+      /* Neon Cyan Primary */
+      --primary: 185 100% 50%;
+      --primary-foreground: 240 10% 3.9%;
 
-    /* Deep Blue Secondary */
-    --secondary: 220 100% 50%;
-    --secondary-foreground: 0 0% 98%;
+      /* Deep Blue Secondary */
+      --secondary: 220 100% 50%;
+      --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 6% 15%;
-    --muted-foreground: 240 5% 64.9%;
+      --muted: 240 6% 15%;
+      --muted-foreground: 240 5% 64.9%;
 
-    /* Neon Purple Accent */
-    --accent: 270 90% 60%;
-    --accent-foreground: 0 0% 98%;
+      /* Neon Purple Accent */
+      --accent: 270 90% 60%;
+      --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 0 0% 98%;
 
-    --border: 240 6% 20%;
-    --input: 240 6% 20%;
-    --ring: 185 100% 50%;
+      --border: 240 6% 20%;
+      --input: 240 6% 20%;
+      --ring: 185 100% 50%;
 
-    --radius: 0.75rem;
+      --radius: 0.75rem;
 
-    /* Custom Design Tokens */
-    --glow-primary: 185 100% 50%;
-    --glow-secondary: 220 100% 50%;
-    --glow-accent: 270 90% 60%;
-    
-    --gradient-cyber: linear-gradient(135deg, hsl(185 100% 50% / 0.2), hsl(220 100% 50% / 0.2), hsl(270 90% 60% / 0.2));
-    --gradient-neon: linear-gradient(90deg, hsl(185 100% 50%), hsl(220 100% 50%));
-    --gradient-purple: linear-gradient(135deg, hsl(220 100% 50%), hsl(270 90% 60%));
-    
-    --shadow-neon: 0 0 20px hsl(185 100% 50% / 0.3), 0 0 40px hsl(185 100% 50% / 0.2);
-    --shadow-glow: 0 4px 20px hsl(185 100% 50% / 0.4);
-    --shadow-card: 0 8px 32px hsl(240 10% 3.9% / 0.6);
-    
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-space;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-@layer utilities {
-  .glow-text {
-    text-shadow: 0 0 10px hsl(var(--glow-primary) / 0.5),
-                 0 0 20px hsl(var(--glow-primary) / 0.3);
-  }
-
-  .glow-border {
-    box-shadow: 0 0 10px hsl(var(--glow-primary) / 0.3),
-                inset 0 0 10px hsl(var(--glow-primary) / 0.1);
-  }
-
-  .neon-glow {
-    box-shadow: var(--shadow-neon);
-  }
-
-  .card-glow {
-    box-shadow: var(--shadow-card);
-    transition: var(--transition-smooth);
-  }
-
-  .card-glow:hover {
-    box-shadow: var(--shadow-glow), var(--shadow-card);
-    transform: translateY(-4px);
-  }
-
-  .gradient-text {
-    background: var(--gradient-neon);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
-
-@layer utilities {
-  .card-glow:hover {
-    box-shadow: var(--shadow-glow), var(--shadow-card);
-    transform: translateY(-4px);
-  }
-
-  .gradient-text {
-    background: var(--gradient-neon);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    
-  }
-
-  @keyframes glowing-border-animation {
-    0% {
-      box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--accent));
-    }
-    50% {
-      box-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--accent));
-    }
-    100% {
-      box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--accent));
+      /* Custom Design Tokens */
+      --glow-primary: 185 100% 50%;
+      --glow-secondary: 220 100% 50%;
+      --glow-accent: 270 90% 60%;
+      
+      --gradient-cyber: linear-gradient(135deg, hsl(185 100% 50% / 0.2), hsl(220 100% 50% / 0.2), hsl(270 90% 60% / 0.2));
+      --gradient-neon: linear-gradient(90deg, hsl(185 100% 50%), hsl(220 100% 50%));
+      --gradient-purple: linear-gradient(135deg, hsl(220 100% 50%), hsl(270 90% 60%));
+      
+      --shadow-neon: 0 0 20px hsl(185 100% 50% / 0.3), 0 0 40px hsl(185 100% 50% / 0.2);
+      --shadow-glow: 0 4px 20px hsl(185 100% 50% / 0.4);
+      --shadow-card: 0 8px 32px hsl(240 10% 3.9% / 0.6);
+      
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 
-  .glowing-frame {
-    animation: glowing-border-animation 4s infinite ease-in-out;
-    border-radius: 9999px; /* rounded-full */
-  }
-  /* EFEK NAMA MENYALA KELAP-KELIP (LEBIH REDUP) */
-  @keyframes flicker-glow-rafi {
-    0%, 100% {
-      text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #00e5fe, 0 0 8px #00e5fe;
-    }
-    50% {
-      text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #00e5fe, 0 0 16px #00e5fe;
-    }
-  }
-
-  .flicker-glow-rafi {
-    color: #e0fbfc; /* Warna dasar teks agar glow terlihat bagus */
-    animation: flicker-glow-rafi 4s ease-in-out infinite;
-  }
-
-    /* EFEK KURSOR UNTUK TYPEWRITER */
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: hsl(var(--primary)); }
+  @layer base {
+    * {
+      @apply border-border;
     }
 
-    /* --- STYLES FOR SCROLLING LOGO CAROUSEL --- */
-  .scroller {
-    overflow: hidden;
-    width: 100%;
-    mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
-    -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+    body {
+      @apply bg-background text-foreground font-space;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
-  .scroller-inner {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    width: max-content;
-    animation: scroll 45s linear infinite;
+  @layer utilities {
+    .glow-text {
+      text-shadow: 0 0 10px hsl(var(--glow-primary) / 0.5),
+                  0 0 20px hsl(var(--glow-primary) / 0.3);
+    }
+
+    .glow-border {
+      box-shadow: 0 0 10px hsl(var(--glow-primary) / 0.3),
+                  inset 0 0 10px hsl(var(--glow-primary) / 0.1);
+    }
+
+    .neon-glow {
+      box-shadow: var(--shadow-neon);
+    }
+
+    .card-glow {
+      box-shadow: var(--shadow-card);
+      transition: var(--transition-smooth);
+    }
+
+    .card-glow:hover {
+      box-shadow: var(--shadow-glow), var(--shadow-card);
+      transform: translateY(-4px);
+    }
+
+    .gradient-text {
+      background: var(--gradient-neon);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
-  .scroller-inner:hover {
-    animation-play-state: running;
-  }
+  @layer utilities {
+    .card-glow:hover {
+      box-shadow: var(--shadow-glow), var(--shadow-card);
+      transform: translateY(-4px);
+    }
 
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+    .gradient-text {
+      background: var(--gradient-neon);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
 
-  .tech-carousel-glow {
-    box-shadow: inset 0 0 20px hsl(var(--primary) / 0.2),
-                0 0 25px hsl(var(--accent) / 0.15);
-    border-radius: 1rem;
+      
+    }
+
+    .scroll-fade {
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    }
+
+    @keyframes glowing-border-animation {
+      0% {
+        box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--accent));
+      }
+      50% {
+        box-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--accent));
+      }
+      100% {
+        box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--accent));
+      }
+    }
+
+    .glowing-frame {
+      animation: glowing-border-animation 4s infinite ease-in-out;
+      border-radius: 9999px; /* rounded-full */
+    }
+    /* EFEK NAMA MENYALA KELAP-KELIP (LEBIH REDUP) */
+    @keyframes flicker-glow-rafi {
+      0%, 100% {
+        text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #00e5fe, 0 0 8px #00e5fe;
+      }
+      50% {
+        text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #00e5fe, 0 0 16px #00e5fe;
+      }
+    }
+
+    .flicker-glow-rafi {
+      color: #e0fbfc; /* Warna dasar teks agar glow terlihat bagus */
+      animation: flicker-glow-rafi 4s ease-in-out infinite;
+    }
+
+      /* EFEK KURSOR UNTUK TYPEWRITER */
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: hsl(var(--primary)); }
+      }
+
+      /* --- STYLES FOR SCROLLING LOGO CAROUSEL --- */
+    .scroller {
+      overflow: hidden;
+      width: 100%;
+      mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+      -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+    }
+
+    .scroller-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      width: max-content;
+      animation: scroll 45s linear infinite;
+    }
+
+    .scroller-inner:hover {
+      animation-play-state: running;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .tech-carousel-glow {
+      box-shadow: inset 0 0 20px hsl(var(--primary) / 0.2),
+                  0 0 25px hsl(var(--accent) / 0.15);
+      border-radius: 1rem;
+    }
+
+  @layer components {
+
+    .card-neon-glow-animation::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(
+        45deg,
+        var(--primary),
+        var(--secondary),
+        var(--accent),
+        var(--primary)
+      );
+      background-size: 400% 400%;
+      border-radius: 24px; /* Sesuaikan dengan border-radius parent */
+      filter: blur(10px);
+      opacity: 0.7;
+      z-index: 0;
+      animation: rotate-border 10s ease-in-out infinite;
+    }
+
+    .card-neon-glow-animation::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(
+        45deg,
+        var(--primary),
+        var(--secondary),
+        var(--accent),
+        var(--primary)
+      );
+      background-size: 400% 400%;
+      border-radius: 24px; /* Sesuaikan dengan border-radius parent */
+      z-index: 0;
+      animation: rotate-border 10s ease-in-out infinite;
+    }
+
+    @keyframes rotate-border {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
   }
 }

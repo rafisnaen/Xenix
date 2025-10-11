@@ -150,7 +150,7 @@ const Hero = () => {
                 className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow group"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                View My Work
+                A Glimpse of My Work
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
