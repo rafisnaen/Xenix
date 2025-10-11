@@ -29,30 +29,12 @@ const Experience = () => {
     },
     {
       year: 2025,
-      title: "3rd Place - AI Innovation Challenge",
-      company: "COMPFEST 17",
-      period: "2025",
-      description: "Achieved 3rd place out of 240+ teams at COMPFEST 17's AI Innovation Challenge with 'HORUS AI'. An intelligent computer vision system that detects illegal parking in real time and notifies authorities for timely action.",
-      image: compfest17Image,
-      color: "primary",
-    },
-    {
-      year: 2025,
       title: "Researcher",
       company: "ICCSCI 2025",
       period: "Feb 2025 – Aug 2025",
       description: "Led leukemia image classification research using CNN, YOLOv11, and Vision Transformers. Built AI pipeline and presented at an international conference.",
       image: placeholderImage,
       color: "primary",
-    },
-    {
-      year: 2024,
-      title: "Software Engineering Academy Participant",
-      company: "COMPFEST 16",
-      period: "2024",
-      description: "Selected as one of 20 individual participants among thousands of applicants in Indonesia. Participated in a 2-month software engineering bootcamp focused on Microservices, Clean Code, Clean Architecture, API, Design Patterns, CI/CD, and Security. Collaborated with a team of four to build Seatudy.",
-      image: compfest16Image,
-      color: "secondary",
     },
     {
       year: 2024,
@@ -104,7 +86,7 @@ const Experience = () => {
     <section id="experience" className="pt-24 pb-16 bg-muted/20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             The <span className="gradient-text">Journey Within</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-neon mx-auto rounded-full"></div>
@@ -113,7 +95,7 @@ const Experience = () => {
         {/* Wrapper luar untuk efek glow */}
         <div className="max-w-6xl mx-auto rounded-2xl animate-[glowing-border-animation_4s_infinite_ease-in-out]">
           {/* Kontainer dalam untuk konten */}
-          <div className="bg-card rounded-2xl p-4 flex flex-col md:flex-row h-[500px] md:h-[450px] overflow-hidden">
+          <div className="bg-card rounded-2xl p-4 flex flex-col md:flex-row h-[420px] md:h-[380px] overflow-hidden">
             {/* Kiri: Timeline */}
             <div className="w-full md:w-[150px] relative p-4 flex flex-row md:flex-col justify-around items-center">
               <div className="absolute top-1/2 md:top-0 left-0 md:left-[38px] w-full md:w-0.5 h-0.5 md:h-full bg-gradient-to-r md:bg-gradient-to-b from-primary via-secondary to-accent"></div>
@@ -148,28 +130,28 @@ const Experience = () => {
                   ref={(el) => (itemRefs.current[index] = el)}
                   data-index={index}
                   key={index}
-                  className={`min-h-full flex flex-col justify-center py-4 transition-all duration-500 ${
+                  className={`min-h-full flex flex-col justify-center py-2 transition-all duration-500 ${
                     index === activeIndex ? "opacity-100 blur-0 scale-100" : "opacity-40 blur-sm scale-95"
                   }`}
                   style={{ scrollSnapAlign: "center" }}
                 >
-                  <div className="bg-muted/30 p-6 rounded-xl">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                  <div className="bg-muted/30 p-5 rounded-xl">
+                    <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
                       <div>
-                        <h3 className={`text-xl font-bold text-${exp.color} mb-1`}>
+                        <h3 className={`text-lg font-bold text-${exp.color} mb-1`}>
                           {exp.title}
                         </h3>
-                        <div className="flex items-center gap-2 text-muted-foreground">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Briefcase className="w-4 h-4" />
                           <span className="font-medium">{exp.company}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
-                        <Calendar className="w-4 h-4" />
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded-full">
+                        <Calendar className="w-3 h-3" />
                         <span>{exp.period}</span>
                       </div>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {exp.description}
                     </p>
                   </div>
@@ -183,7 +165,7 @@ const Experience = () => {
                 key={activeIndex} // Ganti key untuk memicu animasi saat gambar berubah
                 src={experiences[activeIndex].image}
                 alt={experiences[activeIndex].title}
-                className="rounded-lg shadow-lg object-cover w-full max-h-[350px] animate-fade-in"
+                className="rounded-lg shadow-lg object-cover w-full max-h-[300px] animate-fade-in"
               />
             </div>
           </div>
