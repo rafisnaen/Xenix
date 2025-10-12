@@ -25,9 +25,9 @@ const Contact = () => {
     },
     {
       icon: MessageCircle,
-      label: "Telegram",
-      value: "Chat Telegram !",
-      href: "t.me/Emptymoonnn",
+      label: "WhatsApp",
+      value: "Chat WhatsApp !",
+      href: "https://wa.me/6281991711208",
       color: "primary",
     },
     {

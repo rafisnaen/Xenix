@@ -1,48 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import ExperienceTimeline from './ExperienceTimeline';
 import ExperienceCard from './ExperienceCard';
-import placeholderImage from '@/assets/Logo.png';
+import { experiences } from '@/data/experiences';
 
 const Experience = () => {
-  const experiences = [
-    {
-      year: 2025,
-      title: 'Software Developer',
-      company: 'INFEST Hackathon',
-      period: 'Oct 2025 – Present',
-      description: 'Designed Teman Usaha, an AI-powered investment platform using fraud detection and credit scoring models.',
-      image: placeholderImage,
-      color: 'primary',
-    },
-    {
-      year: 2025,
-      title: 'Web Developer',
-      company: 'Hology 2.0 Hackathon',
-      period: 'Aug 2025 – Sep 2025',
-      description: 'Built BukaPajak, a Web3 tax transparency platform using React and TailwindCSS with real-time data visualization.',
-      image: placeholderImage,
-      color: 'accent',
-    },
-    {
-      year: 2025,
-      title: 'Researcher',
-      company: 'ICCSCI 2025',
-      period: 'Feb 2025 – Aug 2025',
-      description: 'Led leukemia image classification research using CNN, YOLOv11, and Vision Transformers. Built AI pipeline and presented at an international conference.',
-      image: placeholderImage,
-      color: 'primary',
-    },
-    {
-      year: 2024,
-      title: 'Teaching Assistant',
-      company: 'BINUS University',
-      period: 'Nov 2024 – Jan 2025',
-      description: 'Taught programming fundamentals and mentored 145+ students in foundational computer science concepts.',
-      image: placeholderImage,
-      color: 'secondary',
-    },
-  ].sort((a, b) => b.year - a.year);
-
   const [activeIndex, setActiveIndex] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -73,7 +34,7 @@ const Experience = () => {
         if (ref) observer.unobserve(ref);
       });
     };
-  }, [experiences]);
+  }, []);
 
   const activeYear = experiences[activeIndex]?.year;
 
@@ -98,7 +59,7 @@ const Experience = () => {
             >
               {experiences.map((exp, index) => (
                 <ExperienceCard
-                  key={index}
+                  key={exp.title}
                   experience={exp}
                   isActive={index === activeIndex}
                   refProp={(el) => (itemRefs.current[index] = el)}
