@@ -1,11 +1,11 @@
-import INFEST_Hackathon from '@/assets/infest_hackathon.png';
-import PBP from '@/assets/pbp.jpg';
-import BukaPajak from '@/assets/bukapajak.png';
-import UREEKA_AI from '@/assets/ureeka_ai.png';
-import Responsi from '@/assets/responsi.png';
-import UREEKA_Web from '@/assets/ureeka_web.png';
-import Researcher from '@/assets/researcher.png';
-import TeachingAssistant from '@/assets/teachingassistant.jpg';
+import INFEST_Hackathon from 'images/infest_hackathon.png';
+import PBP from '/images/pbp.png';
+import BukaPajak from 'images/bukapajak.png';
+import UREEKA_AI from 'images/ureeka_ai.png';
+import Responsi from 'images/responsi.png';
+import UREEKA_Web from 'images/ureeka_web.png';
+import Researcher from 'images/researcher.png';
+import TeachingAssistant from 'images/teachingassistant.jpg';
 
 export const experiences = [
   {
