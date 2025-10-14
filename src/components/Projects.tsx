@@ -24,7 +24,7 @@ const Projects = () => {
       title: "Chattipus Bottotipus",
       description: "An advanced chatbot with customizable LLM settings and auto-summarization.",
       tech: ["Python", "LangChain", "OpenRouter"],
-      category: "AI",
+      category: "AI & Data",
       color: "accent",
     },
     {
@@ -38,19 +38,19 @@ const Projects = () => {
       title: "LogTech",
       description: "Database architecture for a digital logistics system transformation.",
       tech: ["MySQL"],
-      category: "Research",
+      category: "AI & Data",
       color: "secondary",
     },
     {
       title: "Teman Usaha",
       description: "AI-powered investment platform with fraud detection and credit scoring.",
       tech: ["Python", "Machine Learning", "Flask"],
-      category: "AI",
+      category: "Web",
       color: "accent",
     },
   ];
 
-  const categories = ["All", "Web", "Mobile", "AI", "Research"];
+  const categories = ["All", "Web", "Mobile", "AI & Data"];
 
   const filteredProjects =
     activeFilter === "All"
