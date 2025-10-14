@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "../assets/Profile.jpg";
 
 const Hero = () => {
-  // ... (kode state dan useEffect tetap sama) ...
+  // State untuk typewriter judul
   const [titleText, setTitleText] = useState('');
   const [isDeletingTitle, setIsDeletingTitle] = useState(false);
   const [titleLoopNum, setTitleLoopNum] = useState(0);
@@ -12,7 +12,7 @@ const Hero = () => {
   const titlesToRotate = ["Software Engineer", "AI Enthusiast"];
   const titlePeriod = 1200;
 
-  // --- State untuk Typewriter Sapaan ---
+  // State untuk typewriter sapaan
   const [greetingText, setGreetingText] = useState('');
   const [isDeletingGreeting, setIsDeletingGreeting] = useState(false);
   const [greetingLoopNum, setGreetingLoopNum] = useState(0);
@@ -20,7 +20,16 @@ const Hero = () => {
   const greetingsToRotate = ["Hi,", "こんにちは,", "안녕하세요,", "Bonjour,", "Hallo,"];
   const greetingPeriod = 2000;
 
-  // --- useEffect untuk Typewriter Judul ---
+  // State untuk efek parallax
+  const [offsetY, setOffsetY] = useState(0);
+  const handleScroll = () => setOffsetY(window.pageYOffset);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // useEffect untuk typewriter judul
   useEffect(() => {
     let titleTicker = setInterval(() => {
       tickTitle();
@@ -28,7 +37,7 @@ const Hero = () => {
     return () => { clearInterval(titleTicker) };
   }, [titleText]);
 
-  // --- useEffect untuk Typewriter Sapaan ---
+  // useEffect untuk typewriter sapaan
   useEffect(() => {
     let greetingTicker = setInterval(() => {
       tickGreeting();
@@ -36,7 +45,7 @@ const Hero = () => {
     return () => { clearInterval(greetingTicker) };
   }, [greetingText]);
 
-  // --- Fungsi Tick untuk Judul ---
+  // Fungsi tick untuk judul
   const tickTitle = () => {
     let i = titleLoopNum % titlesToRotate.length;
     let fullText = titlesToRotate[i];
@@ -58,7 +67,7 @@ const Hero = () => {
     }
   };
 
-  // --- Fungsi Tick untuk Sapaan ---
+  // Fungsi tick untuk sapaan
   const tickGreeting = () => {
     let i = greetingLoopNum % greetingsToRotate.length;
     let fullText = greetingsToRotate[i];
@@ -92,40 +101,38 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center lg:text-left space-y-6 animate-fade-in">
             
-            {/* --- LOKASI ICON SOSIAL MEDIA --- */}
+            {/* --- Ikon Sosial Media (Tooltip Vertikal ke Atas) --- */}
             <div className="flex gap-4 justify-center lg:justify-start">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="relative group">
-                <Button variant="ghost" size="icon" className="h-14 w-14 hover:bg-white/10">
-                  <img src="/logos/instagram.svg" alt="Instagram" className="h-8 w-8 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+              <a href="https://instagram.com/rafisnaen" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="relative group">
+                <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-white/10">
+                  <img src="/logos/instagram.svg" alt="Instagram" className="h-6 w-6 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
                 </Button>
-                <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-xs text-foreground opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
+                <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-[10px] text-foreground opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
                   Instagram
                 </span>
               </a>
               <a href="https://github.com/rafisnaen" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="relative group">
-                <Button variant="ghost" size="icon" className="h-14 w-14 hover:bg-white/10">
-                  <img src="/logos/github.svg" alt="GitHub" className="h-8 w-8 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+                <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-white/10">
+                  <img src="/logos/github.svg" alt="GitHub" className="h-6 w-6 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
                 </Button>
-                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-xs text-foreground opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
+                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-[10px] text-foreground opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
                   GitHub
                 </span>
               </a>
               <a href="https://linkedin.com/in/rafiisnaen" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="relative group">
-                <Button variant="ghost" size="icon" className="h-14 w-14 hover:bg-white/10">
-                  <img src="/logos/linkedin.svg" alt="LinkedIn" className="h-8 w-8 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+                <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-white/10">
+                  <img src="/logos/linkedin.svg" alt="LinkedIn" className="h-6 w-6 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
                 </Button>
-                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-xs text-foreground opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
+                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-1 py-2 bg-card/80 rounded-md text-[10px] text-foreground opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out pointer-events-none [writing-mode:vertical-rl] tracking-wider">
                   LinkedIn
                 </span>
               </a>
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-              {/* Baris pertama untuk sapaan, dengan tinggi tetap */}
               <div className="h-[1.2em]">
                 <span className="inline-block">{greetingText}</span>
               </div>
-              {/* Baris kedua untuk nama */}
               <div>
                 I'm <span style={{ color: '#00e5fe' }}>Rafi</span>{' '}
                 <span style={{ color: '#00aeff' }}>Isnaen</span>
@@ -138,7 +145,7 @@ const Hero = () => {
               </span>
             </h2>
 
-            <p className="text-lg text-muted-foreground max-w-2xl">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0">
               Specialized in Software Engineering, passionate about building 
               scalable and intelligent systems. I'm exploring the development of an application and AI to 
               create future-ready digital solutions.
@@ -166,7 +173,10 @@ const Hero = () => {
           </div>
 
           <div className="flex-1 flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <div className="relative glowing-frame">
+            <div 
+              className="relative glowing-frame"
+              style={{ transform: `translateY(${offsetY * 0.1}px)` }}
+            >
               <img
                 src={profileImage}
                 alt="Rafi Isnaen"

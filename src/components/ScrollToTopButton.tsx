@@ -8,7 +8,13 @@ const ScrollToTopButton = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      const scrolled = window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+      const viewportHeight = window.innerHeight;
+      const shouldBeVisible = scrolled > 300;
+      const isNearBottom = pageHeight - (scrolled + viewportHeight) < 150;
+
+      if (shouldBeVisible && !isNearBottom) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

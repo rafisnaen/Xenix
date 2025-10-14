@@ -1,19 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react"; // Impor ikon Download
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import CV from "@/assets/CurriculumVitae_MuhammadRafiIsnaen_Internship.pdf"; // Path ke CV Anda
+import CV from "@/assets/CurriculumVitae_MuhammadRafiIsnaen_Internship.pdf";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [activeSection, setActiveSection] = useState("home");
 
   const navLinks = [
     { href: "#home", label: "Home" },
@@ -22,6 +15,27 @@ const Navbar = () => {
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+
+      // Logika untuk menentukan bagian aktif
+      const sections = navLinks.map(link => document.getElementById(link.href.substring(1)));
+      const scrollPosition = window.scrollY + 100;
+
+      let currentSection = 'home';
+      for (const section of sections) {
+        if (section && scrollPosition >= section.offsetTop) {
+          currentSection = section.id;
+        }
+      }
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
@@ -54,20 +68,22 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+                className={`text-sm font-medium transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full ${
+                  activeSection === link.href.substring(1)
+                    ? 'text-primary after:w-full'
+                    : 'text-foreground/80 hover:text-primary after:w-0'
+                }`}
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -78,14 +94,17 @@ const Navbar = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 space-y-2 animate-fade-in">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-muted rounded-lg transition-all"
+                className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                  activeSection === link.href.substring(1)
+                    ? 'bg-muted text-primary'
+                    : 'text-foreground/80 hover:text-primary hover:bg-muted'
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}

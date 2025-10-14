@@ -69,6 +69,12 @@ All colors MUST be HSL.
       font-family: 'Space Grotesk', sans-serif;
     }
 
+    @media (min-width: 768px) {
+      body, a, button {
+        cursor: none;
+      }
+    }
+
     html {
       scroll-behavior: smooth;
     }

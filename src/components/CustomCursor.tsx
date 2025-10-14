@@ -41,14 +41,16 @@ const CustomCursor = () => {
     };
   }, []);
 
+  const cursorOpacityClass = isVisible ? 'opacity-100' : 'opacity-0';
+
   return (
-    <div className={cn('hidden md:block', isVisible ? 'opacity-100' : 'opacity-0')}>
+    <div className={cn('hidden md:block', cursorOpacityClass)}>
       <div
         className={cn(
           'fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-primary pointer-events-none z-[9999] transition-transform duration-100 ease-out',
-          isHovering ? 'scale-150' : 'scale-100'
+          isHovering ? 'scale-150 bg-primary/20' : 'scale-100' // Efek membesar dengan latar belakang
         )}
-        style={{ transform: `translate(${position.x - 16}px, ${position.y - 16}px) ${isHovering ? 'scale(1.5)' : 'scale(1)'}` }}
+        style={{ transform: `translate(${position.x - 16}px, ${position.y - 16}px)` }}
       />
       <div
         className="fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999]"
@@ -59,3 +61,4 @@ const CustomCursor = () => {
 };
 
 export default CustomCursor;
+
