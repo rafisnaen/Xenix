@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "public/profile.jpg";
 
 const Hero = () => {
   // State untuk typewriter judul
