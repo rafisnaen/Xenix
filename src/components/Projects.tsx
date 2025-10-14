@@ -1,54 +1,11 @@
 import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
+import { projects } from "@/data/projects"; // Mengimpor data dari file terpisah
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-
-  const projects = [
-    {
-      title: "BukaPajak",
-      description: "A Web3 tax transparency platform with real-time data visualization.",
-      tech: ["React", "Next.js", "TailwindCSS", "Web3"],
-      category: "Web",
-      color: "primary",
-    },
-    {
-      title: "SocMedVA",
-      description: "An AI-integrated voice assistant app for elderly social media users.",
-      tech: ["Flutter", "Python", "Google AI Studio"],
-      category: "Mobile",
-      color: "secondary",
-    },
-    {
-      title: "Chattipus Bottotipus",
-      description: "An advanced chatbot with customizable LLM settings and auto-summarization.",
-      tech: ["Python", "LangChain", "OpenRouter"],
-      category: "AI & Data",
-      color: "accent",
-    },
-    {
-      title: "Tunaskarsa",
-      description: "A gamified parental screen-time management app.",
-      tech: ["Flutter"],
-      category: "Mobile",
-      color: "primary",
-    },
-    {
-      title: "LogTech",
-      description: "Database architecture for a digital logistics system transformation.",
-      tech: ["MySQL"],
-      category: "AI & Data",
-      color: "secondary",
-    },
-    {
-      title: "Teman Usaha",
-      description: "AI-powered investment platform with fraud detection and credit scoring.",
-      tech: ["Python", "Machine Learning", "Flask"],
-      category: "Web",
-      color: "accent",
-    },
-  ];
 
   const categories = ["All", "Web", "Mobile", "AI & Data"];
 
@@ -56,6 +13,18 @@ const Projects = () => {
     activeFilter === "All"
       ? projects
       : projects.filter((p) => p.category === activeFilter);
+
+  const handleGithubClick = (project) => {
+    if (!project.isGithubAvailable) {
+      toast({
+        title: <span className="text-primary">Notification 🔔</span>,
+        description: "GitHub for this project is not available yet.",
+        duration: 3000,
+      });
+    } else {
+      window.open(project.github, "_blank");
+    }
+  };
 
   return (
     <section id="projects" className="pt-24 pb-16 relative">
@@ -67,7 +36,7 @@ const Projects = () => {
           <div className="w-20 h-1 bg-gradient-neon mx-auto rounded-full"></div>
         </div>
 
-        {/* Category Filter */}
+        {/* Filter Kategori */}
         <div className="flex flex-wrap justify-center gap-2 mb-10 animate-slide-up">
           {categories.map((category) => (
             <Button
@@ -85,7 +54,7 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* Grid Proyek */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProjects.map((project, index) => (
             <div
@@ -93,6 +62,13 @@ const Projects = () => {
               className="bg-card p-5 rounded-2xl border border-primary/20 card-glow animate-fade-in group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              <div className="relative w-full h-40 rounded-lg overflow-hidden mb-4 bg-black/20">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
               <div className="flex items-start justify-between mb-3">
                 <div className={`px-2.5 py-0.5 bg-${project.color}/10 border border-${project.color}/30 rounded-full text-xs text-${project.color}`}>
                   {project.category}
@@ -102,6 +78,7 @@ const Projects = () => {
                     size="icon"
                     variant="ghost"
                     className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/10"
+                    onClick={() => handleGithubClick(project)}
                   >
                     <Github className="w-4 h-4" />
                   </Button>
@@ -109,6 +86,7 @@ const Projects = () => {
                     size="icon"
                     variant="ghost"
                     className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/10"
+                    onClick={() => window.open(project.projectLink, "_blank")}
                   >
                     <ExternalLink className="w-4 h-4" />
                   </Button>

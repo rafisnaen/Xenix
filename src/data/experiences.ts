@@ -1,4 +1,11 @@
-import placeholderImage from '@/assets/Logo.png';
+import INFEST_Hackathon from '@/assets/INFEST_Hackathon.png';
+import PBP from '@/assets/PBP.jpg';
+import BukaPajak from '@/assets/BukaPajak.png';
+import UREEKA_AI from '@/assets/UREEKA_AI.png';
+import Responsi from '@/assets/Responsi.png';
+import UREEKA_Web from '@/assets/UREEKA_Web.png';
+import Researcher from '@/assets/Researcher.png';
+import TeachingAssistant from '@/assets/TeachingAssistant.jpg';
 
 export const experiences = [
   {
@@ -6,8 +13,8 @@ export const experiences = [
     title: 'Software Developer',
     company: 'INFEST Hackathon',
     period: 'Oct 2025 – Present',
-    description: 'Designed Teman Usaha, an AI-powered investment platform using fraud detection and credit scoring models.',
-    image: placeholderImage,
+    description: 'Designed Teman Usaha, an AI-powered investment platform using fraud detection and credit scoring models for MSMEs. Currently in the final stage, doing 20+ hours non-stop of prototype development.',
+    image: INFEST_Hackathon,
     color: 'primary',
     category: 'Hackathon',
   },
@@ -17,7 +24,7 @@ export const experiences = [
     company: 'Himpunan Mahasiswa Teknik Informatika (HIMTI)',
     period: 'Sep 2025',
     description: 'Served as Technical Lead of PBP Bootcamp, a 3-week online program designed to prepare Computer Science freshmen by covering the full scope of first-semester courses. Responsible for managing the learning flow, ensuring smooth technical execution, and coordinating participant data to deliver an effective learning experience.',
-    image: placeholderImage,
+    image: PBP,
     color: 'secondary',
     category: 'Organization',
   },
@@ -27,7 +34,7 @@ export const experiences = [
     company: 'Hology 2.0 Hackathon',
     period: 'Aug 2025 – Sep 2025',
     description: 'Built BukaPajak, a Web3 tax transparency platform using React and TailwindCSS with real-time data visualization.',
-    image: placeholderImage,
+    image: BukaPajak,
     color: 'accent',
     category: 'Hackathon',
   },
@@ -37,7 +44,7 @@ export const experiences = [
     company: 'ICCSCI 2025',
     period: 'Feb 2025 – Aug 2025',
     description: 'Led leukemia image classification research using CNN, YOLOv11, and Vision Transformers. Built AI pipeline and presented at an international conference.',
-    image: placeholderImage,
+    image: Researcher,
     color: 'primary',
     category: 'Research',
   },
@@ -47,17 +54,17 @@ export const experiences = [
     company: 'Himpunan Mahasiswa Teknik Informatika (HIMTI)',
     period: 'Mar 2025 – Jan 2025 (Expected)',
     description: 'Served as an activist in the Responsi Division of HIMTI BINUS, responsible for creating accessible study summaries for All Region - BINUS students (Batch B27 & B28), including midterm and final exam materials. Collaborated with the team to ensure effective communication and smooth execution of learning support activities.',
-    image: placeholderImage,
+    image: Responsi,
     color: 'accent',
     category: 'Organization',
   },
-  {
+    {
       year: 2025,
       title: 'Web Development Member',
       company: 'UREEKA',
       period: 'Mar 2025 – Jan 2025 (Expected)',
       description: 'Competed in 3+ intensive hackathons, mastered front-end technologies including React, Next.js, and TailwindCSS to build responsive and dynamic user interfaces from ideation to deployment.',
-      image: placeholderImage,
+      image: UREEKA_Web,
       color: 'primary',
       category: 'Organization',
     },
@@ -67,7 +74,7 @@ export const experiences = [
       company: 'UREEKA',
       period: 'Aug 2025 – Sep 2025',
       description: 'Gained deep knowledge about Artificial Intelligence from how does LLM works to hands-on experience in AI Engineering projects',
-      image: placeholderImage,
+      image: UREEKA_AI,
       color: 'primary',
       category: 'Organization',
     },
@@ -77,7 +84,7 @@ export const experiences = [
     company: 'BINUS University',
     period: 'Nov 2024 – Jan 2025',
     description: 'Taught programming fundamentals and mentored 145+ students in foundational computer science concepts.',
-    image: placeholderImage,
+    image: TeachingAssistant,
     color: 'secondary',
     category: 'Teaching',
   },
