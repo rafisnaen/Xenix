@@ -20,26 +20,38 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const scrollOffset = window.scrollY + 100;
-      let newActiveSection = "home";
-
-      // Iterasi dari belakang untuk menemukan bagian aktif terakhir yang digulir
-      for (let i = navLinks.length - 1; i >= 0; i--) {
-        const link = navLinks[i];
-        const section = document.getElementById(link.href.substring(1));
-
-        if (section && section.offsetTop <= scrollOffset) {
-          newActiveSection = section.id;
-          break; // Keluar dari loop setelah bagian aktif ditemukan
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      let currentSection = "";
+      if (scrollPosition + windowHeight >= documentHeight - 10) { 
+        currentSection = "contact";
+      } else {
+        for (let i = navLinks.length - 1; i >= 0; i--) {
+          const link = navLinks[i];
+          const section = document.getElementById(link.href.substring(1));
+  
+          if (section) {
+            const sectionTop = section.offsetTop;
+            if (scrollPosition >= sectionTop - windowHeight / 3) {
+              currentSection = section.id;
+              break; 
+            }
+          }
         }
       }
-
-      setActiveSection(newActiveSection);
+      
+      setActiveSection(currentSection || 'home');
     };
 
     window.addEventListener("scroll", handleScroll);
+    
+    
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navLinks]); 
 
   return (
     <nav
