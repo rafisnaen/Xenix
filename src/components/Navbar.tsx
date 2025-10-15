@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download } from "lucide-react"; // Impor ikon Download
 import { Button } from "@/components/ui/button";
-import CV from "@/assets/curriculumvitae_muhammadrafiisnaen_internship.pdf";
+import CV from "@/assets/CurriculumVitae_MuhammadRafiIsnaen_Internship.pdf"; // Path ke CV Anda
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "#home", label: "Home" },
@@ -15,43 +22,6 @@ const Navbar = () => {
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      let currentSection = "";
-      if (scrollPosition + windowHeight >= documentHeight - 10) { 
-        currentSection = "contact";
-      } else {
-        for (let i = navLinks.length - 1; i >= 0; i--) {
-          const link = navLinks[i];
-          const section = document.getElementById(link.href.substring(1));
-  
-          if (section) {
-            const sectionTop = section.offsetTop;
-            if (scrollPosition >= sectionTop - windowHeight / 3) {
-              currentSection = section.id;
-              break; 
-            }
-          }
-        }
-      }
-      
-      setActiveSection(currentSection || 'home');
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    
-    
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [navLinks]); 
 
   return (
     <nav
@@ -84,22 +54,20 @@ const Navbar = () => {
             </a>
           </div>
 
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full ${
-                  activeSection === link.href.substring(1)
-                    ? 'text-primary after:w-full'
-                    : 'text-foreground/80 hover:text-primary after:w-0'
-                }`}
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
+          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -110,17 +78,14 @@ const Navbar = () => {
           </Button>
         </div>
 
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 space-y-2 animate-fade-in">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                  activeSection === link.href.substring(1)
-                    ? 'bg-muted text-primary'
-                    : 'text-foreground/80 hover:text-primary hover:bg-muted'
-                }`}
+                className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-muted rounded-lg transition-all"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
