@@ -20,17 +20,21 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Logika untuk menentukan bagian aktif
-      const sections = navLinks.map(link => document.getElementById(link.href.substring(1)));
-      const scrollPosition = window.scrollY + 100;
+      const scrollOffset = window.scrollY + 100;
+      let newActiveSection = "home";
 
-      let currentSection = 'home';
-      for (const section of sections) {
-        if (section && scrollPosition >= section.offsetTop) {
-          currentSection = section.id;
+      // Iterasi dari belakang untuk menemukan bagian aktif terakhir yang digulir
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const link = navLinks[i];
+        const section = document.getElementById(link.href.substring(1));
+
+        if (section && section.offsetTop <= scrollOffset) {
+          newActiveSection = section.id;
+          break; // Keluar dari loop setelah bagian aktif ditemukan
         }
       }
-      setActiveSection(currentSection);
+
+      setActiveSection(newActiveSection);
     };
 
     window.addEventListener("scroll", handleScroll);
