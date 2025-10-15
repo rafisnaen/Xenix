@@ -84,7 +84,7 @@ export const experiences = [
     company: 'BINUS University',
     period: 'Nov 2024 – Jan 2025',
     description: 'Taught programming fundamentals and mentored 145+ students in foundational computer science concepts.',
-    image: '/images/teachingassistant.jpg',
+    image: '/images/teachingassistant.png',
     color: 'secondary',
     category: 'Teaching',
   },
