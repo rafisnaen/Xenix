@@ -24,7 +24,7 @@ export const experiences = [
     company: 'Himpunan Mahasiswa Teknik Informatika (HIMTI)',
     period: 'Sep 2025',
     description: 'Served as Technical Lead of PBP Bootcamp, a 3-week online program designed to prepare Computer Science freshmen by covering the full scope of first-semester courses. Responsible for managing the learning flow, ensuring smooth technical execution, and coordinating participant data to deliver an effective learning experience.',
-    image: '/images/pbp.png',
+    image: '/images/pbp.jpg',
     color: 'secondary',
     category: 'Organization',
   },
