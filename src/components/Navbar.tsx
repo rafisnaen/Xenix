@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react"; // Impor ikon Download
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import CV from "@/assets/curriculumvitae_muhammadrafiisnaen_internship.pdf"; // Path ke CV Anda
+import CV from "@/assets/curriculumvitae_muhammadrafiisnaen_internship.pdf";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
