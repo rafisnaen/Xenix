@@ -1,21 +1,12 @@
-import INFEST_Hackathon from 'images/infest_hackathon.png';
-import PBP from 'images/pbp.png';
-import BukaPajak from 'images/bukapajak.png';
-import UREEKA_AI from 'images/ureeka_ai.png';
-import Responsi from 'images/responsi.png';
-import UREEKA_Web from 'images/ureeka_web.png';
-import Researcher from 'images/researcher.png';
-import TeachingAssistant from 'images/teachingassistant.jpg';
-
 export const experiences = [
   {
     year: 2025,
-    title: 'Software Developer',
-    company: 'INFEST Hackathon',
-    period: 'Oct 2025 – Present',
-    description: 'Designed Teman Usaha, an AI-powered investment platform using fraud detection and credit scoring models for MSMEs. Currently in the final stage, doing 20+ hours non-stop of prototype development.',
-    image: '/images/infest_hackathon.png',
-    color: 'primary',
+    title: 'Web Developer',
+    company: '2nd Winner of INFEST Hackathon',
+    period: 'Sep 2025 - Oct 2025',
+    description: 'Designed Teman Usaha, an AI-powered investment platform using fraud detection and credit scoring models for MSMEs. Created the Website with 22-hours of non-stop development in the final stage of the competition.',
+    image: '/images/infest_hackathon_2.png',
+    color: 'accent',
     category: 'Hackathon',
   },
   {
@@ -43,7 +34,7 @@ export const experiences = [
     title: 'Researcher',
     company: 'ICCSCI 2025',
     period: 'Feb 2025 – Aug 2025',
-    description: 'Led leukemia image classification research using CNN, YOLOv11, and Vision Transformers. Built AI pipeline and presented at an international conference.',
+    description: 'Spearheaded research on B-cell Acute Lymphoblastic Leukemia (B-ALL) detection through image classification, comparing CNN, YOLOv11, and Vision Transformers, managed the end-to-end research pipeline, from data acquisition and preprocessing to designing a standardized CNN architecture and conducting rigorous performance evaluations using 8+ distinct metrics, and authored a research paper on the findings, which was successfully presented to an international academic community.',
     image: '/images/researcher.png',
     color: 'primary',
     category: 'Research',
@@ -83,7 +74,7 @@ export const experiences = [
     title: 'Teaching Assistant',
     company: 'BINUS University',
     period: 'Nov 2024 – Jan 2025',
-    description: 'Taught programming fundamentals and mentored 145+ students in foundational computer science concepts.',
+    description: 'Mentored 145+ high school students in algorithmic logic, problem-solving principles, and software development fundamentals using Blockly and MIT App Inventor, fostering early interest in technology while assisting lecturers in delivering introductory lessons on programming, providing guidance and simplifying complex concepts for beginners.',
     image: '/images/teachingassistant.png',
     color: 'secondary',
     category: 'Teaching',

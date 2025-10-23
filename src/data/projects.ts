@@ -17,8 +17,8 @@ export const projects = [
     category: "Web",
     color: "accent",
     image: "/images/infest_hackathon.png",
-    github: "",
-    projectLink: "https://drive.google.com/file/d/1auSZhpptLJE7X8Zgx8rzKUXmWZcEBTBw/view?usp=sharing",
+    github: "https://github.com/rafisnaen/TemanUsaha",
+    projectLink: "https://nextpath.my.id",
     isGithubAvailable: false,
   },
   {
