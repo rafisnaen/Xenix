@@ -11,7 +11,7 @@ export const projects = [
     isGithubAvailable: true,
   },
   {
-    title: "Teman Usaha",
+    title: "TemanUsaha",
     description: "AI-powered investment platform with fraud detection and credit scoring.",
     tech: ["Python", "Machine Learning", "Flask"],
     category: "Web",
