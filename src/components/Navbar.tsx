@@ -36,7 +36,7 @@ const Navbar = () => {
               href="#home"
               className="text-xl font-bold gradient-text hover:opacity-80 transition-opacity"
             >
-              Rafi.dev
+              Xenixz
             </a>
             <span className="text-muted-foreground hidden sm:inline">///</span>
             <a
